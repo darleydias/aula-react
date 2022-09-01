@@ -11,27 +11,16 @@ import axios from "axios"
 class App extends React.Component{
     constructor(props){
         super(props)
-        this.state = {itens:[]}
     }
     componentDidMount(){
-        console.log("Buscar da API")
-        axios.get("https://git.heroku.com/catenampmg.git")
-            .then(result =>{
-                this.setState({itens:result.data})
-                console.log(result.data)
-            }
-            ).catch((err) => {
-                console.error("ops! ocorreu um erro" + err);})
     }
     render(){
 
         return(
-            
             <div>
-            
+                <h1>To aqui</h1>
             <Header/>
             <div className="page-content d-flex align-items-stretch"> 
-                {(res,req)=>res.send(this.state)}
                 <Menu/>
                 <Content/>
             </div>

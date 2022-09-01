@@ -10,7 +10,7 @@ class Movimentacao extends React.Component{
     }
     render(){
         return(
-                <div class="container-fluid">
+                <div className="container-fluid">
                      Movimentacao da Evidência
                 </div>
         )

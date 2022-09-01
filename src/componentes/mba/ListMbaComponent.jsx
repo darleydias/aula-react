@@ -1,6 +1,6 @@
 import React from "react";
 
-class CicloVida extends React.Component{
+class Mba extends React.Component{
     constructor(props){
         super(props)
         this.state = {itens:[]}
@@ -10,10 +10,10 @@ class CicloVida extends React.Component{
     }
     render(){
         return(
-                <div class="container-fluid">
-                     Ciclo de vida da Evidência
+                <div className="container-fluid">
+                     Cumprimento de Mandado de Busca e Apreensão
                 </div>
         )
     }
 }
-export default CicloVida
+export default Mba

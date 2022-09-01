@@ -7,9 +7,9 @@ class Banco extends React.Component{
 
     render(){
         return(
-            <div class="card mb-3  border-1">
-                <div class="card-body">
-                    <div class="d-flex align-items-center">
+            <div className="card mb-3  border-1">
+                <div className="card-body">
+                    <div className="d-flex align-items-center">
                   BANCO
                     </div>
                     </div>

@@ -10,8 +10,8 @@ class Dashboard extends React.Component{
     }
     render(){
         return(
-                <div class="container-fluid">
-                     Dashboard
+                <div className="container-fluid">
+                     <h2>Dashboard</h2>
                 </div>
         )
     }

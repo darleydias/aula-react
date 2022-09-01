@@ -1,6 +1,6 @@
 import React from "react";
 
-class BancoEvidencia extends React.Component{
+class CicloVida extends React.Component{
     constructor(props){
         super(props)
         this.state = {itens:[]}
@@ -10,10 +10,10 @@ class BancoEvidencia extends React.Component{
     }
     render(){
         return(
-                <div class="container-fluid">
-                     Banco de Evidências
+                <div className="container-fluid">
+                     Ciclo de vida da Evidência
                 </div>
         )
     }
 }
-export default BancoEvidencia
+export default CicloVida
