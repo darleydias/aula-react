@@ -16,12 +16,15 @@ class BancoEvidenciaController {
         }
     }
 
-createEvidencia(evidencia){
-    return axios.post(BASE_URL.evidencia)
+async createEvidencia(evidencia){
+    var response = await EvidenciaService.createEvidencia(evidencia)
+    if (response.status === 201) {
+        return 'Eviencia cadastrada com sucesso!!'
+    }
+    else {
+        return 'Erro ' + response.data;
+    }
 }
-
-
-
 }
 
 export default new BancoEvidenciaController

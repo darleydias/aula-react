@@ -16,7 +16,7 @@ class Notificacao extends React.Component{
                       <use href="#envelope-1"> </use>
                     </svg>
                   </div>
-                  <div className="ms-3"><span className="h6 d-block fw-normal mb-1 text-xs text-gray-600">You have 6 new messages </span><small className="small text-gray-600">4 minutes ago</small></div>
+                  <div className="ms-3"><span className="h6 d-block fw-normal mb-1 text-xs text-gray-600">Você tem 6 mensagens </span><small className="small text-gray-600">4 minutes ago</small></div>
                 </div></a></li>
             <li><a className="dropdown-item py-3" href="#"> 
                 <div className="d-flex">
@@ -25,7 +25,7 @@ class Notificacao extends React.Component{
                       <use href="#chats-1"> </use>
                     </svg>
                   </div>
-                  <div className="ms-3"><span className="h6 d-block fw-normal mb-1 text-xs text-gray-600">New 2 WhatsApp messages</span><small className="small text-gray-600">4 minutes ago</small></div>
+                  <div className="ms-3"><span className="h6 d-block fw-normal mb-1 text-xs text-gray-600">02 Whastapp novos</span><small className="small text-gray-600">4 minutes ago</small></div>
                 </div></a></li>
             <li><a className="dropdown-item py-3" href="#"> 
                 <div className="d-flex">
@@ -34,7 +34,7 @@ class Notificacao extends React.Component{
                       <use href="#checked-window-1"> </use>
                     </svg>
                   </div>
-                  <div className="ms-3"><span className="h6 d-block fw-normal mb-1 text-xs text-gray-600">Server Rebooted</span><small className="small text-gray-600">8 minutes ago</small></div>
+                  <div className="ms-3"><span className="h6 d-block fw-normal mb-1 text-xs text-gray-600">Servifro reinicializado</span><small className="small text-gray-600">8 minutes ago</small></div>
                 </div></a></li>
             <li><a className="dropdown-item py-3" href="#"> 
                 <div className="d-flex">
@@ -43,9 +43,9 @@ class Notificacao extends React.Component{
                       <use href="#chats-1"> </use>
                     </svg>
                   </div>
-                  <div className="ms-3"><span className="h6 d-block fw-normal mb-1 text-xs text-gray-600">New 2 WhatsApp messages</span><small className="small text-gray-600">10 minutes ago</small></div>
+                  <div className="ms-3"><span className="h6 d-block fw-normal mb-1 text-xs text-gray-600">Duas mensagens de whatsapp</span><small className="small text-gray-600">10 minutes ago</small></div>
                 </div></a></li>
-            <li><a className="dropdown-item all-notifications text-center" href="#"> <strong className="text-xs text-gray-600">view all notifications                                            </strong></a></li>
+            <li><a className="dropdown-item all-notifications text-center" href="#"> <strong className="text-xs text-gray-600">Todas Notificações                                          </strong></a></li>
           </ul>
         </li>
 

@@ -5,7 +5,18 @@ const BASE_URL = 'https://catenampmg.herokuapp.com/evidencias'
 class EvienciaService {
 
     getEvidencias() {
-        return axios.get(BASE_URL);
+
+        let config={
+            headers:{
+                auth:'opa'
+            }
+        }
+
+        return axios.get(BASE_URL,config);
+    }
+
+    createEvidencia(evidencia) {
+        return axios.post(BASE_URL, evidencia)
     }
 
 }

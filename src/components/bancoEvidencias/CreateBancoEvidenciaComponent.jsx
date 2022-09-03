@@ -4,7 +4,7 @@ import BancoEvidenciaController from "../../controllers/BancoEvidenciaController
 class CreateEvienciaComponent extends React.Component {
     constructor(props) {
         super(props)
-        this.state = {codigo:"",nome:""}
+        this.state = {codigo:"",descricao:""}
         this.save=this.save.bind(this)
     }
 
@@ -16,17 +16,20 @@ class CreateEvienciaComponent extends React.Component {
         this.setState({codigo:event.target.value})
     }
     changeNome = (event)=>{
-        this.setState({nome:event.target.value})
+        this.setState({descricao:event.target.value})
     }
-    save = (e)=>{
+    save =async(e)=>{
         e.preventDefault()
         let evidencia = {
             codigo:this.state.codigo,
-            nome:this.state.nome
+            descricao:this.state.descricao
             }
-        BancoEvidenciaController.createEvidencia(evidencia).then(x=>{
-            alert(x.data)
-        })
+        
+            var resultado = await BancoEvidenciaController.createEvidencia(evidencia);
+
+            alert(resultado)
+    
+            this.goToList();
     }
 
     render() {
@@ -51,11 +54,11 @@ class CreateEvienciaComponent extends React.Component {
                                         <div className="form-group">
                                         <label>Nome:</label>
                                             <input type="text"
-                                                name="nome"
+                                                name="descricao"
                                                 className="form-control"
                                                 onChange={this.changeNome}
-                                                placeholder="nome"
-                                                value={this.state.nome}>                                                                                            
+                                                placeholder="descricao"
+                                                value={this.state.descricao}>                                                                                            
                                             </input>
                                         </div>
 

@@ -6,18 +6,18 @@ import Notificacao from "./header/Notificacao";
 class Header extends React.Component{
     render(){
         return(
-            <>      
+            <div>      
             <header className="header z-index-50">
             <nav className="navbar py-3 px-0 shadow-sm text-white position-relative">
               {/* Search Box*/}
-              <div className="search-box shadow-sm">
+              <div className="search-box shadow-sm d-none">
                 <button className="dismiss d-flex align-items-center">
                   <svg className="svg-icon svg-icon-heavy">
                     <use href="#close-1"> </use>
                   </svg>
                 </button>
-                <form id="searchForm" action="#" role="search">
-                  <input className="form-control shadow-0" 
+                <form id="searchForm" action="#" role="search" className="d-none">
+                  <input className="form-control shadow-0 d-none" 
                   type="text"
                    placeholder="O que você está procurando..."/>
                 </form>
@@ -34,7 +34,8 @@ class Header extends React.Component{
                   {/* Navbar Menu */}
                   <ul className="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
                     {/* Search*/}
-                    <li className="nav-item d-flex align-items-center"><a id="search" href="#">
+                    <li className="nav-item d-flex align-items-center">
+                        <a id="search" href="#">
                         <svg className="svg-icon svg-icon-xs svg-icon-heavy">
                           <use href="#find-1"> </use>
                         </svg></a>
@@ -53,7 +54,7 @@ class Header extends React.Component{
               </div>
             </nav>
             </header>
-            </>          
+            </div>          
         )
     }
 }

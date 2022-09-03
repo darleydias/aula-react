@@ -8,9 +8,7 @@ class ListBancoEvidenciaComponent extends React.Component {
     constructor(props) {
         super(props)
         this.state = { evidencias: [] }
-
         this.detail = this.detail.bind(this);
-
     }
 
     async componentDidMount() {
