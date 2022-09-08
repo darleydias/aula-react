@@ -1,16 +1,21 @@
 import React from "react";
-import  OperacaoController from "../../controllers/OperacaoControllers" 
+import OperacaoController from "../../controllers/OperacaoController";
 
 class ListOpeacaoComponent extends React.Component{
     constructor(props){
         super(props)
         this.state = {operacoes:[]}
         this.detail = this.detail.bind(this);
+        this.delete = this.delete.bind(this);
     }
     async componentDidMount(){
         var data = await OperacaoController.getOperacoes()
+
+        //console.log(data)
+
         if (data === 0) {
-            alert('Ocorreu um erro ao listar OPERACOES!')
+            //alert('Ocorreu um erro ao listar OPERACOES!')
+            this.props.history.push('/')
         }
         else {
 
@@ -18,21 +23,26 @@ class ListOpeacaoComponent extends React.Component{
         }
     }
     addOperacao() {
-        this.props.history.push('/add-operacao/0100')
+        this.props.history.push('/add-operacao/00')
     }
 
-    detail() {
-        this.props.history.push('/view-operacao/0100');
+    detail(codigo) {
+        this.props.history.push(`/view-operacao/${codigo}`);
     }
 
     delete(codigo) {
         this.props.history.push(`/delete-operacao/${codigo}`)
     }
+    update(codigo) {
+        this.props.history.push(`/add-operacao/${codigo}`)
+    }
 
     render(){
         return(
+            
             <div>
-            <h2 className="text-center">Lista de tens de estatistica</h2>
+            
+            <h2 className="text-center">Lista de Operacoes</h2>
             <button className="btn btn-primary" onClick={() => this.addOperacao()}>Novo Item</button>
             <hr />
             <div className="row">
@@ -51,7 +61,16 @@ class ListOpeacaoComponent extends React.Component{
                                     <td>{operacao.codigo}</td>
                                     <td>{operacao.nome}</td>
                                     <td>
-                                        <button className="btn btn-info btn-sm" onClick={() => this.detail()}>Detalhes</button>
+                                        <button className="btn btn-info btn-sm" onClick={() => this.detail(operacao.codigo)}>Detalhes</button>
+                                        <button style={{ marginLeft: "10px" }} 
+                                            className="btn btn-danger btn-sm"
+                                            onClick={() => this.delete(operacao.codigo)}>
+                                            Excluir
+                                        </button>
+                                        <button style={{ marginLeft: "10px" }} 
+                                            className="btn btn-warning btn-sm"
+                                            onClick={() => this.update(operacao.codigo)}>
+                                            Alterar</button>
                                     </td>
                                 </tr>
                             )

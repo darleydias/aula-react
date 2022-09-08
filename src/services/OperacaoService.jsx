@@ -1,13 +1,25 @@
-import axios from "axios"
 
-const BASE_URL ='https://catenampmg.herokuapp.com/operacoes'
+import api from './ApiInterceptor'
 
+const BASE_RESOURCE = 'operacoes'
 class OperacaoService {
-    getOperacoes() {''
-        return axios.get(BASE_URL);
+    
+    getOperacoes() {
+        return api.get(BASE_RESOURCE);
     }
+
     createOperacao(operacao) {
-        return axios.post(BASE_URL, operacao)
+        return api.post(BASE_RESOURCE, operacao)
+    }
+
+    buscar(codigo) {
+        let URL = BASE_RESOURCE + '/' + codigo
+        return api.get(URL);
+    }
+
+    excluir(codigo) {
+        let URL = BASE_RESOURCE + '/' + codigo
+        return api.delete(URL)
     }
 }
 export default new OperacaoService;     

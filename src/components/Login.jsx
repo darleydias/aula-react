@@ -6,19 +6,18 @@ import AuthService from "../services/AuthService";
 class Login extends React.Component{
     constructor(props){
         super(props)
-        this.state={usuario:"",senha:""}
+        this.state={login:"",senha:""}
     }
     sendLogin = async (event)=>{
             event.preventDefault();
 
             let credential={
-                login:this.state.usuario,
-                password:this.state.senha
+                login:this.state.login,
+                senha:this.state.senha
             }
-
             let token = await AuthController.authenticate(credential)
             AuthService.setLoggerUser(token)
-            // this.props.history.push("")
+            this.props.history.push("/list-operacao")
     }
     render(){
         
@@ -27,7 +26,7 @@ class Login extends React.Component{
                 <div className="container d-flex justify-content-denter">
                     <div className="card mt-5 w-50" >
                         <div className="card-body">
-                            <form >
+                            <form onSubmit={this.sendLogin}>
                                 <div className="form-group">
                                     <label htmlFor="usuario">Usuário</label>
                                     <input
@@ -35,13 +34,13 @@ class Login extends React.Component{
                                     className="form-control"
                                     id="usuario"
                                     name="usuario"
-                                    value={this.state.usuario}
-                                    onChange={e=>this.setState({usuario:e.target.value})}
+                                    value={this.state.login}
+                                    onChange={e=>this.setState({login:e.target.value})}
                                     placehold="digite nome"/>
 
                                     <label htmlFor="senha">Usuário</label>
                                     <input
-                                    type="text"
+                                    type="password"
                                     className="form-control"
                                     value={this.state.senha}
                                     onChange={e=>this.setState({senha:e.target.value})}

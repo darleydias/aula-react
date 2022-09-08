@@ -1,25 +1,27 @@
 import axios from "axios"
 
-const BASE_URL = 'https://catenampmg.herokuapp.com/login'
+//const BASE_URL = 'https://catenampmg.herokuapp.com/login'
+const BASE_URL = 'http://localhost:3001'
 
 class AuthService {
 
     authenticate(credential) {
-        return axios.get(BASE_URL,credential);
+        const endpoint = `${BASE_URL}/login` 
+        return axios.post(endpoint,credential);
     }
     setLoggerUser(data){
-
         let json_token = JSON.stringify(data)
-        localStorage.setItem('user'.json_token )
+        localStorage.setItem('json_token',json_token )
     }
     getLoggedUser(){
-        let token = localStorage.getItem('token_user')
-        if(!toke)return null;
+        let token = localStorage.getItem('json_token')
+        if(!token)return null;
         try{
             let user_token = JSON.parse(token)
             return user_token
-        }catch{
-
+        }catch(error){
+            console.log(error)
+            return null
         }
     }
 
