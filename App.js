@@ -8,14 +8,26 @@ export default function App() {
   const [tela,setTela] = useState("menu")
   const [jogador,setJogador] = useState("")
   const [tabuleiro,setTabuleiro] = useState("")
+  const [ganhador,setGanhador] = useState("")
   
   switch (tela) {
     case 'menu':
       return getTelaMenu()
     case 'tabuleiro':
         return getTabuleiro()
+    case 'resultado':
+        return getResultado()
     default:
       break;
+  }
+  function getResultado(){
+    return(
+    <View style={styles.container}>
+          <Text style={styles.titulo}>Jogo da Velha</Text>
+          <Text style={styles.subtitulo}>O ganhador foi {ganhador}</Text>
+          
+        </View>
+    )
   }
   function getTelaMenu(){
       return (
@@ -24,10 +36,10 @@ export default function App() {
           <Text style={styles.subtitulo}>Selecione o primeiro jogador</Text>
           <View style={styles.inlineitens}>
             <TouchableOpacity style={styles.boxjogador} onPress={()=>iniciarJogo("x")}>
-              <Text>x</Text>
+              <Text style={styles.jogadorx}>x</Text>
             </TouchableOpacity>
             <TouchableOpacity  style={styles.boxjogador} onPress={()=>iniciarJogo("o")}>
-              <Text>0</Text>
+              <Text style={styles.jogadoro}>0</Text>
             </TouchableOpacity>
           </View>
           <Text>O Jogador {jogador} está jogando</Text>
@@ -44,9 +56,23 @@ export default function App() {
         ])
         setTela('tabuleiro')
     }
+    function verificarGanhador(){
+
+    }
     function jogar(linha,coluna){
       tabuleiro[linha][coluna] = jogador
       setTabuleiro([...tabuleiro])
+      setJogador(jogador ==='x'?'o':'x')
+
+      if(tabuleiro[0][0]!==""){
+        if(tabuleiro[0][0]===tabuleiro[0][1]&&tabuleiro[0][1]===tabuleiro[0][2]){
+          setGanhador(tabuleiro[0][0] + " e ganhou na primeira linha")
+          setTela("resultado")
+        }
+      }
+      
+      
+      setTela("resultado")
     }
 
     function voltarMenu(jogador){
@@ -68,9 +94,10 @@ export default function App() {
                               <TouchableOpacity 
                                   key={nrColuna}
                                   style={styles.boxjogador}
+                                  disabled={coluna!=""}
                                   onPress={()=>jogar(nrLinha,nrColuna)}
                               >
-                                <Text>{coluna}</Text>
+                                <Text style={coluna=='x'? styles.jogadorx:styles.jogadoro}>{coluna}</Text>
                               </TouchableOpacity>
                             )
                             })
@@ -121,4 +148,13 @@ const styles = StyleSheet.create({
   inlineitens: {
     flexDirection:"row"
   },
+  jogadorx:{
+    fontSize:40,
+    color:"blue"
+  },
+
+  jogadoro:{
+    fontSize:40,
+    color:"brown"
+  }
 });
