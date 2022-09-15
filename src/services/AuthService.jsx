@@ -24,6 +24,9 @@ class AuthService {
             return null
         }
     }
+    enviaEmail(email){
+        console.log("email enviado")
+    }
 
 
 }

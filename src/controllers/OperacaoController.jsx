@@ -5,7 +5,6 @@ class OperacaoController {
 
     try{
         var response = await OperacaoService.getOperacoes();
-
         if (response.status === 200) {
             return response.data;
         }

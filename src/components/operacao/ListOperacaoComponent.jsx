@@ -1,49 +1,50 @@
-import React from "react";
+import React,{useEffect,useState} from "react";
 import OperacaoController from "../../controllers/OperacaoController";
+import {Link, useNavigate,useParams} from "react-router-dom"
 
-class ListOpeacaoComponent extends React.Component{
-    constructor(props){
-        super(props)
-        this.state = {operacoes:[]}
-        this.detail = this.detail.bind(this);
-        this.delete = this.delete.bind(this);
-    }
-    async componentDidMount(){
-        var data = await OperacaoController.getOperacoes()
 
-        //console.log(data)
+const ListOpeacaoComponent=(props)=>{
+  
+    var [operacoes,setOperacoes] = useState([])
+    // detail = detail.bind(this);
+    // deletar = deletar.bind(this);
 
+    const params= useParams();
+    // const {codigo} = params;
+    var navigate = useNavigate();
+    
+    useEffect((navigate) => {   
+        var data = OperacaoController.getOperacoes()
         if (data === 0) {
-            //alert('Ocorreu um erro ao listar OPERACOES!')
-            this.props.history.push('/')
+            console.log('Ocorreu um erro ao listar OPERACOES!')
+            navigate('/')
         }
         else {
-
-            this.setState({ operacoes: data })
+            setOperacoes(data)
         }
-    }
-    addOperacao() {
-        this.props.history.push('/add-operacao/00')
+    },[]);
+
+    var addOperacao=()=> {
+        navigate('/add-operacao/00')
     }
 
-    detail(codigo) {
-        this.props.history.push(`/view-operacao/${codigo}`);
+    var detail=(codigo)=>{
+        navigate(`/view-operacao/${codigo}`);
     }
 
-    delete(codigo) {
-        this.props.history.push(`/delete-operacao/${codigo}`)
+    var deletar =(codigo)=>{
+        navigate(`/delete-operacao/${codigo}`)
     }
-    update(codigo) {
-        this.props.history.push(`/add-operacao/${codigo}`)
+    var update=(codigo)=> {
+        navigate(`/add-operacao/${codigo}`)
     }
-
-    render(){
         return(
             
             <div>
             
             <h2 className="text-center">Lista de Operacoes</h2>
-            <button className="btn btn-primary" onClick={() => this.addOperacao()}>Novo Item</button>
+            <button className="btn btn-primary" onClick={() => addOperacao()}>Novo Item</button>
+            
             <hr />
             <div className="row">
                 <table className="table table-striped table-bordered">
@@ -55,21 +56,21 @@ class ListOpeacaoComponent extends React.Component{
                         </tr>
                     </thead>
                     <tbody>
-                        {
-                            this.state.operacoes.map((operacao, index) =>
+                        {   
+                            operacoes.map((operacao, index) =>
                                 <tr key={index}>
                                     <td>{operacao.codigo}</td>
                                     <td>{operacao.nome}</td>
                                     <td>
-                                        <button className="btn btn-info btn-sm" onClick={() => this.detail(operacao.codigo)}>Detalhes</button>
+                                        <button className="btn btn-info btn-sm" onClick={() => detail(operacao.codigo)()}>Detalhes</button>
                                         <button style={{ marginLeft: "10px" }} 
                                             className="btn btn-danger btn-sm"
-                                            onClick={() => this.delete(operacao.codigo)}>
+                                            onClick={() => deletar(operacao.codigo)}>
                                             Excluir
                                         </button>
                                         <button style={{ marginLeft: "10px" }} 
                                             className="btn btn-warning btn-sm"
-                                            onClick={() => this.update(operacao.codigo)}>
+                                            onClick={() => update(operacao.codigo)}>
                                             Alterar</button>
                                     </td>
                                 </tr>
@@ -80,6 +81,6 @@ class ListOpeacaoComponent extends React.Component{
             </div>
         </div>
         )
-    }
+    
 }
 export default ListOpeacaoComponent

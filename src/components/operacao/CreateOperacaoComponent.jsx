@@ -52,8 +52,6 @@ class CreateOperacaoComponent extends React.Component {
         this.goToList();
     }
 
-
-
     render() {
         return (
             <div>
