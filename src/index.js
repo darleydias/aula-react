@@ -27,6 +27,7 @@ root.render(
                         <Route path="/" element={<AppLayout/>}>
                           
                             <Route path="operacoes" element={<ListOperacaoComponents/>}/> 
+       
                             <Route path="dashboard" element={<Dashboard/>}/>
                             <Route path="view-operacao/:codigo" element={<DetailOperacaoComponent/>}/>
                             <Route path="add-operacao/:codigo" element = {<CreateOperacaoComponent/>}/>

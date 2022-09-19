@@ -2,7 +2,6 @@ import React,{useEffect,useState} from "react";
 import OperacaoController from "../../controllers/OperacaoController";
 import {Link, useNavigate,useParams} from "react-router-dom"
 
-
 const ListOpeacaoComponent=(props)=>{
   
     var [operacoes,setOperacoes] = useState([])
@@ -15,6 +14,7 @@ const ListOpeacaoComponent=(props)=>{
     
     useEffect((navigate) => {   
         var data = OperacaoController.getOperacoes()
+        console.log(data.nome)
         if (data === 0) {
             console.log('Ocorreu um erro ao listar OPERACOES!')
             navigate('/')
@@ -38,6 +38,7 @@ const ListOpeacaoComponent=(props)=>{
     var update=(codigo)=> {
         navigate(`/add-operacao/${codigo}`)
     }
+    //operacoes = [{codigo:1,nome:"Darley"}]
         return(
             
             <div>
@@ -57,7 +58,9 @@ const ListOpeacaoComponent=(props)=>{
                     </thead>
                     <tbody>
                         {   
-                            operacoes.map((operacao, index) =>
+                            
+                            operacoes.map((operacao, index) =>{
+                                return(
                                 <tr key={index}>
                                     <td>{operacao.codigo}</td>
                                     <td>{operacao.nome}</td>
@@ -74,13 +77,13 @@ const ListOpeacaoComponent=(props)=>{
                                             Alterar</button>
                                     </td>
                                 </tr>
-                            )
+                                )
+                                })
                         }
                     </tbody>
                 </table>
             </div>
         </div>
         )
-    
 }
 export default ListOpeacaoComponent

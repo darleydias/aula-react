@@ -14,12 +14,11 @@ instance.interceptors.request.use((config) => {
     let token = AuthService.getLoggedUser();
     console.log(JSON.stringify(token))
     if (token) {
-        config.headers["auth"] = token;
+        config.headers["auth"] = token; 
     }
     return config;
 }, (error) => {
     return Promise.reject(error)
 })
-
 
 export default instance;
