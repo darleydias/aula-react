@@ -3,8 +3,9 @@ import OperacaoService from "../services/OperacaoService"
 class OperacaoController {
     async getOperacoes() {
     try{
-        var response = await OperacaoService.getOperacoes();
         console.log("é nois")
+        var response = await OperacaoService.getOperacoes();
+  
         if (response.status === 200) {
 
             return response.data

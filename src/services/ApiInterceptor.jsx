@@ -3,8 +3,8 @@ import AuthService from './AuthService'
 
 
 const instance = axios.create({
-    baseURL: 'http://localhost:3001',
-    // baseURL: 'https://catenampmg.herokuapp.com',
+    // baseURL: 'http://localhost:3001',
+    baseURL: 'https://catenampmg.herokuapp.com',
     headers: {
         "Content-Type": "application/json"
     }

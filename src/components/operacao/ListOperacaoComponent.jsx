@@ -1,15 +1,16 @@
 import React,{useEffect,useState} from "react";
 import OperacaoController from "../../controllers/OperacaoController";
-import {Link, useNavigate,useParams} from "react-router-dom"
+import {useNavigate} from "react-router-dom"
 
 const ListOpeacaoComponent=(props)=>{
   
     var [operacoes,setOperacoes] = useState([])
     // detail = detail.bind(this);
     // deletar = deletar.bind(this);
-
-    const params= useParams();
-    // const {codigo} = params;
+    if(Array.isArray(operacoes)){
+        console.log("É um array")
+    }
+    // const params= useParams();
     var navigate = useNavigate();
     
     useEffect((navigate) => {   
