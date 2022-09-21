@@ -1,11 +1,16 @@
 
 import api from './ApiInterceptor'
+// O interceptor api vi verificar se o usuaio está logado
+// Verificando pelo metodo getLoggedUser() do AuthService se tem token
 
+// const BASE_RESOURCE = 'operacoes'
 const BASE_RESOURCE = 'operacoes'
 class OperacaoService {
     
     getOperacoes() {
-        return api.get(BASE_RESOURCE);
+        const result= api.get(BASE_RESOURCE);
+        // console.log(result)
+        return result
     }
 
     createOperacao(operacao) {
@@ -22,4 +27,4 @@ class OperacaoService {
         return api.delete(URL)
     }
 }
-export default new OperacaoService;     
+export default new OperacaoService();     

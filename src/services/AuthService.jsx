@@ -1,10 +1,9 @@
 import axios from "axios"
 
-//const BASE_URL = 'https://catenampmg.herokuapp.com/login'
-const BASE_URL = 'http://localhost:3001'
+const BASE_URL = 'https://catenampmg.herokuapp.com/login'
+// const BASE_URL = 'http://localhost:3001'
 
 class AuthService {
-
     authenticate(credential) {
         const endpoint = `${BASE_URL}/login` 
         return axios.post(endpoint,credential);
@@ -24,8 +23,9 @@ class AuthService {
             return null
         }
     }
-
-
+    enviaEmail(email){
+        console.log("email enviado")
+    }
 }
 
 export default new AuthService;

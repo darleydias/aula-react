@@ -2,12 +2,13 @@ import OperacaoService from "../services/OperacaoService"
 
 class OperacaoController {
     async getOperacoes() {
-
     try{
+        console.log("é nois")
         var response = await OperacaoService.getOperacoes();
-
+  
         if (response.status === 200) {
-            return response.data;
+
+            return response.data
         }
         else {
             return 0;
@@ -15,9 +16,7 @@ class OperacaoController {
     }catch(error){
         console.log(error)
         return 0;
-    }
-
-  
+    } 
 }
     async createOperacao(operacao) {
         var response = await OperacaoService.createOperacao(operacao);
@@ -46,4 +45,4 @@ class OperacaoController {
         }
     }
 }
-export default new OperacaoController
+export default new OperacaoController()

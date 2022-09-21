@@ -13,7 +13,7 @@ const Routes = () => {
        <BrowserRouter>
           <Route component = {App} path="/" exact/>
            <Route component = { Mba }  path="/mba"/>
-           <Route component = { Operacao }  path="/operacao" />
+           <Route component = { Operacao }  path="/operacoes" />
            <Route component = { Banco }  path="/banco" />
            <Route component = { Movimentacao }  path="/movimentacao" />
            <Route component = { Ciclovida }  path="/cilcovida" />
